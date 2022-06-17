@@ -32,5 +32,18 @@ pipeline {
                 sh "echo Executing deployment stage..."
             }
         }
+        stage('Deploy to k8s'){
+        	steps{
+        		sshagent(['devops']) {
+    				sh "scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@18.156.118.72:/home/ec2-user/"
+    				script{
+    					try{
+    						sh "ssh ec2-user@18.156.118.72 kubectl apply -f ."
+    					}catch(error){
+    						sh "ssh ec2-user@18.156.118.72 kubectl create -f ."
+    					}
+    			}
+    		}
+    	}
     }
 }
