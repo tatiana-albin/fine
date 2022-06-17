@@ -25,6 +25,12 @@ pipeline {
         stage('test') {
             steps {
                 sh "echo Executing testing stage..."
+                
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh "echo Executing deployment stage..."
                 sshagent(['devops']) {
     				sh "scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@3.72.34.63:/home/ec2-user/"
     				script{
@@ -34,11 +40,6 @@ pipeline {
     						sh "ssh ec2-user@3.72.34.63 kubectl create -f ."
     					}
     			}
-            }
-        }
-        stage('deploy') {
-            steps {
-                sh "echo Executing deployment stage..."
             }
         }
         
