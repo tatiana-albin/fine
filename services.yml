@@ -7,6 +7,6 @@ spec:
     app: demo-app-python
   ports:
   - protocol: TCP
-    port: 80
+    port: 5005
     targetPort: 5000
   type: LoadBalancer
