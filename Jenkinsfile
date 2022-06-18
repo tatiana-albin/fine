@@ -25,6 +25,7 @@ pipeline {
         stage('test') {
             steps {
                 sh "echo Executing testing stage..."
+                
             }
         }
         stage('deploy') {
@@ -43,7 +44,8 @@ pipeline {
     						sh "ssh ec2-user@3.125.48.113 kubectl create -f ."
     					}
     			}
-    		}
-    	}
+            }
+        }
+        
     }
 }
