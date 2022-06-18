@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app-python
+  labels:
+    app: demo-app-python
+spec:
+  containers:
+    - name: demo-app-python
+      image: zmihai/pregatit-demo-app-python
+      ports:
+        - containerPort: 5000
