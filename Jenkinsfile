@@ -33,5 +33,5 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "demo-app.yml", kubeconfigId: "mykubeconfig")
+          kubernetesDeploy(configs: "demo-app.yml", kubeconfigId: "jenkins-token")
         }
