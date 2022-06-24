@@ -35,3 +35,7 @@ pipeline {
         script {
           kubernetesDeploy(configs: "demo-app.yml", kubeconfigId: "jenkins-token")
         }
+      }
+    }
+  }
+}
