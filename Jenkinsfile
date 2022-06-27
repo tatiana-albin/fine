@@ -4,12 +4,11 @@ pipeline {
 
   stages {
 
-    stage('Checkout Source') {
-      steps {
-        git url:'https://github.com/tatiana-albin/fine.git', branch:'master',
-        sh 'chmod 755 ./gradlew'
-      }
-    }
+      stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
     
       stage("Build image") {
             steps {
